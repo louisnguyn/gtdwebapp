@@ -1,5 +1,20 @@
-import { Prisma, PrismaClient } from "@prisma/client";
+import { Prisma, PrismaClient, type Todo } from "@prisma/client";
 import { NextResponse, type NextRequest } from "next/server";
+
+const todos: Partial<Todo>[] = [
+  {
+    title: "Learn React",
+    done: true,
+  },
+  {
+    title: "Learn TypeScript",
+    done: false,
+  },
+  {
+    title: "Learn GraphQL",
+    done: false,
+  },
+];
 
 const handler = async (req: NextRequest, res: NextResponse) => {
   if (process.env.E2E !== "true") {
@@ -16,15 +31,27 @@ const handler = async (req: NextRequest, res: NextResponse) => {
   }
 
   // seed users
-  await prisma.user.create({
-    data: {
-      id: "1",
-      name: "Test User",
-      email: "test@user.com",
-      image: "image.png",
-      emailVerified: new Date(),
-    },
-  });
+  // await prisma.user.create({
+  //   data: {
+  //     id: "1",
+  //     name: "Test User",
+  //     email: "test@user.com",
+  //     image: "image.png",
+  //     emailVerified: new Date(),
+  //   },
+  // });
+
+  // seed todos
+  const user = await prisma.user.findFirstOrThrow();
+
+  for (const todo of todos) {
+    await prisma.todo.create({
+      data: {
+        ...todo,
+        userId: user.id,
+      },
+    });
+  }
 
   return NextResponse.json({
     message: "Database Seeded",

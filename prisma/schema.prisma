@@ -28,19 +28,20 @@ model Post {
 
 // Necessary for Next auth
 model Account {
-    id                String  @id @default(cuid())
-    userId            String
-    type              String
-    provider          String
-    providerAccountId String
-    refresh_token     String? // @db.Text
-    access_token      String? // @db.Text
-    expires_at        Int?
-    token_type        String?
-    scope             String?
-    id_token          String? // @db.Text
-    session_state     String?
-    user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+    id                       String  @id @default(cuid())
+    userId                   String
+    type                     String
+    provider                 String
+    providerAccountId        String
+    refresh_token            String? // @db.Text
+    refresh_token_expires_in Int?
+    access_token             String? // @db.Text
+    expires_at               Int?
+    token_type               String?
+    scope                    String?
+    id_token                 String? // @db.Text
+    session_state            String?
+    user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
 }
@@ -62,6 +63,7 @@ model User {
     accounts      Account[]
     sessions      Session[]
     posts         Post[]
+    Todos         Todo[]
 }
 
 model VerificationToken {
@@ -70,4 +72,14 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Todo {
+    id        Int      @id @default(autoincrement())
+    userId    String
+    user      User     @relation(fields: [userId], references: [id])
+    title     String
+    done      Boolean  @default(false)
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }
