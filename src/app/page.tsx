@@ -1,7 +1,10 @@
-import Link from "next/link";
 
+import Link from "next/link";
 import { getServerAuthSession } from "~/server/auth";
 import { TodoList } from "./components/todo-list";
+import App from "next/app";
+import CreatePost from "./components/create-post";
+import Form from "./components/form";
 
 export default async function Home() {
   const session = await getServerAuthSession();
@@ -26,9 +29,9 @@ export default async function Home() {
             </Link>
           </div>
         </div>
-
-        <TodoList />
-      </div>
+             <TodoList />  
+            {/* <CreatePost/> */}
+      </div> 
     </main>
   );
 }
@@ -51,3 +54,6 @@ export default async function Home() {
 //     </div>
 //   );
 // }
+
+
+//TodoList.tsx

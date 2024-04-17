@@ -1,0 +1,68 @@
+
+
+.todo-list{
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin-top: 50px;
+}
+button{
+    font-size: 1em;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+}
+.add-button{
+    background-color: green;
+}
+.add-button:hover{
+    background-color: darkgreen;
+}.delete-button{
+    background-color: red;
+    color:white
+}
+.delete-button:hover{
+    background-color: darkred;
+}
+.move-button{
+    background-color: skyblue;
+}
+input[type="text"]{
+    font-size: 1.6rem;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    color:black;
+}
+ol{
+    padding:0;
+}
+li{
+    font-size:2rem;
+    font-weight: bold;
+    padding: 15px;
+    background-color: white; 
+    margin-bottom: 10px;
+    border: 3px solid black;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    color: black;
+}
+.text{
+    flex: 1;
+
+}
+.delete-button, .move-button{
+    padding: 8px 12px;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+.task-completed .text {
+    text-decoration: line-through;
+}
+input[type="checkbox"]{
+    transform: scale(1.5); 
+}

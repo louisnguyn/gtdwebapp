@@ -2,19 +2,18 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
 import { api } from "~/trpc/react";
 
 export function CreatePost() {
   const router = useRouter();
   const [name, setName] = useState("");
 
-  const createPost = api.post.create.useMutation({
+   const createPost = api.post.create.useMutation({
     onSuccess: () => {
       router.refresh();
       setName("");
     },
-  });
+  }); 
 
   return (
     <form
@@ -41,3 +40,4 @@ export function CreatePost() {
     </form>
   );
 }
+export default CreatePost;

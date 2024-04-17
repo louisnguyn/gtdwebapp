@@ -1,4 +1,4 @@
-"use client";
+/* "use client"; */
 
 import { SessionProvider, useSession } from "next-auth/react";
 
