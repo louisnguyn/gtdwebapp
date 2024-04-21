@@ -4,7 +4,7 @@ import { getServerAuthSession } from "~/server/auth";
 import { TodoList } from "./components/todo-list";
 import App from "next/app";
 import CreatePost from "./components/create-post";
-import Form from "./components/form";
+import "./index.css";
 
 export default async function Home() {
   const session = await getServerAuthSession();

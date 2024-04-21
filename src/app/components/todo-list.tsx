@@ -3,22 +3,6 @@ import React, { useState } from "react";
 import { api } from "~/trpc/server";
 import "./index.css";
 
-/* export async function TodoList() {
-  const todos = await api.todo.todos();
-
-  return (
-    <ul>
-      {todos.map((todo) => (
-        <li key={todo.id} className={todo.done ? "line-through" : ""}>
-          {todo.title}
-        </li>
-      ))}
-    </ul>
-  );
-}  */
-/* export const TodoList = async () => {
-}
-  */
 export function TodoList() {
   const[tasks, setTasks] = useState([{text:'', checked: false}]);
   const [newTask, setNewTask] = useState("");
@@ -84,14 +68,13 @@ export function TodoList() {
           <button
           className="move-button"
           onClick={()=>moveTaskUp(index)}>
-            ⬆️
+            ⬆
           </button>
           <button
           className="move-button"
           onClick={()=>moveTaskDown(index)}>
-            ⬇️
+            ⬇
           </button>
-          
         </li>
       )}
       </ol>
